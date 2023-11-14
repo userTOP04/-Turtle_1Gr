@@ -1,5 +1,7 @@
 import turtle
+import random
 
+turtle.speed(0)
 
 def drow_house(
     x=0,
@@ -8,9 +10,9 @@ def drow_house(
     base_h=10,
     color_b="grey",
     walls_w=100,
-    walls_h=100,
+    walls_h=80,
     color_w="yellow",
-    roof_w=100,
+    roof_w=150,
     roof_h=70,
     color_r="red"
 ):
@@ -43,7 +45,9 @@ def drow_base(x, y, base_w, base_h, color_b):
 
 
 def drow_rect(x, y, width, height, color):
+    turtle.penup()
     turtle.goto(x, y)
+    turtle.pendown()
     turtle.fillcolor(color)
     turtle.begin_fill()
     turtle.fd(width)
@@ -63,21 +67,34 @@ def drow_walls(x, walls_y, walls_w, walls_h, color_w):
     drow_rect(x, walls_y, walls_w, walls_h, color_w)
 
 
-def drow_roof(x, roof_y, roof_w, roof_h, color, walls_w):
-    turtle.goto(x, roof_y)
+def drow_roof(x, y, roof_w, roof_h, color, walls_w):
+    top_x = x + walls_w // 2
+    top_y = y + roof_h
+    top_rw = roof_w // 2
+    turtle.goto(x, y)
+    turtle.fd(walls_w // 2)
+    turtle.fd(roof_w // 2)
     turtle.fillcolor(color)
     turtle.begin_fill()
-    top_x = walls_w // 2
-    top_y = roof_y + roof_h
     turtle.goto(top_x, top_y)
-    right_x = x + walls_w
-    turtle.goto(right_x, roof_y)
-    turtle.goto(x, roof_y)
+    left_x = top_x - top_rw
+    turtle.goto(left_x, y)
+    turtle.goto(x, y)
     turtle.end_fill()
 
 
 
-drow_house()
+drow_house(x=random.randint(-200, 200), y=random.randint(-100, 100))
+drow_house(x=random.randint(-200, 200), y=random.randint(-100, 100))
+drow_house(x=random.randint(-200, 200), y=random.randint(-100, 100))
+drow_house(x=random.randint(-200, 200), y=random.randint(-100, 100))
+drow_house(x=random.randint(-200, 200), y=random.randint(-100, 100))
+drow_house(x=random.randint(-200, 200), y=random.randint(-100, 100))
+drow_house(x=random.randint(-200, 200), y=random.randint(-100, 100))
+drow_house(x=random.randint(-200, 200), y=random.randint(-100, 100))
+drow_house(x=random.randint(-200, 200), y=random.randint(-100, 100))
+drow_house(x=random.randint(-200, 200), y=random.randint(-100, 100))
+
 
 
 turtle.done()
