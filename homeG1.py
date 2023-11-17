@@ -1,6 +1,7 @@
 import turtle
-import random
+from random import randint
 
+turtle.colormode(255)
 turtle.speed(0)
 
 def drow_house(
@@ -43,7 +44,6 @@ def drow_base(x, y, base_w, base_h, color_b):
 
 
 
-
 def drow_rect(x, y, width, height, color):
     turtle.penup()
     turtle.goto(x, y)
@@ -66,6 +66,8 @@ def drow_rect(x, y, width, height, color):
 def drow_walls(x, walls_y, walls_w, walls_h, color_w):
     drow_rect(x, walls_y, walls_w, walls_h, color_w)
 
+def drow_door()
+
 
 def drow_roof(x, y, roof_w, roof_h, color, walls_w):
     top_x = x + walls_w // 2
@@ -82,19 +84,29 @@ def drow_roof(x, y, roof_w, roof_h, color, walls_w):
     turtle.goto(x, y)
     turtle.end_fill()
 
+def draw_street(first_house_x=0, first_house_y=0, houses=10):
+    counter = 0 
+    while counter < houses:
+        base_w = randint(50, 100)
+        walls_w = randint(base_w - 50, base_w)
+        roof_w = randint(walls_w, walls_w + 50)
+        drow_house(
+            x=first_house_x,
+            y=first_house_y,
+            base_w=randint(50, 150),
+            base_h=randint(10, 40),
+            color_b=(randint(0, 255), randint(0, 255), randint(0, 255)),
+            walls_w=randint(50, 150),
+            walls_h=randint(50, 150),
+            color_w=(randint(0, 255), randint(0, 255), randint(0, 255)),
+            roof_w=randint(50, 150),
+            roof_h=randint(10, 40),
+            color_r=(randint(0, 255), randint(0, 255), randint(0, 255))
+        )
+        counter += 1
+        first_house_x += roof_w + base_w
 
 
-drow_house(x=random.randint(-200, 200), y=random.randint(-100, 100))
-drow_house(x=random.randint(-200, 200), y=random.randint(-100, 100))
-drow_house(x=random.randint(-200, 200), y=random.randint(-100, 100))
-drow_house(x=random.randint(-200, 200), y=random.randint(-100, 100))
-drow_house(x=random.randint(-200, 200), y=random.randint(-100, 100))
-drow_house(x=random.randint(-200, 200), y=random.randint(-100, 100))
-drow_house(x=random.randint(-200, 200), y=random.randint(-100, 100))
-drow_house(x=random.randint(-200, 200), y=random.randint(-100, 100))
-drow_house(x=random.randint(-200, 200), y=random.randint(-100, 100))
-drow_house(x=random.randint(-200, 200), y=random.randint(-100, 100))
-
-
+draw_street(-300, 0, 5)
 
 turtle.done()
